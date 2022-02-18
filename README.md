@@ -23,7 +23,7 @@ or choose the correct answer out of multiple choices.
 ![img](Page-1.png)
 
 -Instructions
-![img](Page-2.png)
+![img](Page-2.png) 
 
 -Gameplay
 ![img](Copy-of-Page-3.png)
