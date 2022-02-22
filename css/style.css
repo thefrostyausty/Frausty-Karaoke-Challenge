@@ -19,3 +19,61 @@ header{
     display: flex;
     align-self: center;
 }
+#start-container{
+    border: .5em;
+    border-style: solid;
+    border-color: black;
+    padding: 1em;
+    margin-top: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#instructions-container{
+    max-width: 50em;
+    margin: 0 auto;
+    border: .5em;
+    border-style: solid;
+    border-color: black;
+    padding: 1em;
+    margin-top: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#begin{
+    display: flex;
+}
+
+.gameplay-container{
+    min-height: 750px;
+    min-width: 750px;
+    margin: 0 auto;
+    border: .5em;
+    border-style: solid;
+    border-color: black;
+    padding: 1.5px 1.5px 1.5px 1.5px;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#timer{
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-start;
+    flex: initial;
+}
+#strikes{
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-end;
+    flex: initial;
+}
+#play-button{
+    display: flex;
+}
