@@ -71,11 +71,12 @@ const songs = [
 ]
 console.log('this is the songs', songs)
 
-const timer = 0
-const countdownTimer = () => {
- for (let i = 45; i > 0; i--)
- console.log(countdownTimer(timer))
-}
+const timer = setTimeout(countDown, 46000)
+const countDown = () =>{
+for (let i = 45; i > 0; i--){
+  clearTimeout(timer);
+  } countDown();
+} 
 console.log(countdownTimer)
 const strikeOut = () => {
 if (answerSelection !== songs.answerLyric && answerSelection == songs.wrongLyric1 || songs.wrongLyric2 || songs.wrongLyric3){
