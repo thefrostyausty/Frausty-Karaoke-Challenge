@@ -1,21 +1,29 @@
 
 
 
-const startButton = document.getElementById('#start-button')
-const playButton = document.getElementById('#play-button')
-const countDown = document.getElementById('#timer')
-const playerStrikes = document.getElementById('#strikes')
-const gameLyrics = document.getElementById('#lyrics')
-const answerSelection = document.getElementsByClassName('.gameplay-container')
+const startButton = document.getElementById('start-button')
+const playButton = document.getElementById('play-button')
+const timer = document.getElementById('timer')
+const gameLyrics = document.getElementById('lyrics')
+const answerSelection = document.getElementsByClassName('gameplay-container')
 
 console.log('this is working?', startButton)
 console.log('this is working?', playButton)
-console.log('this is working?', countDown)
-console.log('this is working?', playerStrikes)
+console.log('this is working?', timer)
 console.log('this is working?', gameLyrics)
 
-let strike = 'X'
+const firstPlayer = document.createElement('div').className('gameplay-container')
+let player = 'p1'
 let answerLyric = true;
+
+function switchPlayer(currentPlayer) {
+    if (currentPlayer === 'p1') {
+      player = 'p2';
+    } else {
+      player = 'p1';
+    }
+  }
+  switchPlayer(firstPlayer)
 
 const songs = [
     {
@@ -71,28 +79,41 @@ const songs = [
 ]
 console.log('this is the songs', songs)
 
-const timer = setTimeout(countDown, 46000)
-const countDown = () =>{
-for (let i = 45; i > 0; i--){
-  clearTimeout(timer);
-  } countDown();
-} 
-console.log(countdownTimer)
-const strikeOut = () => {
-if (answerSelection !== songs.answerLyric && answerSelection == songs.wrongLyric1 || songs.wrongLyric2 || songs.wrongLyric3){
-    
-    }
+let count = 45
+
+let countdown = setInterval(time, 1000)
+
+function time()
+{
+  // Checks for answer!
+  if (count === 0) {
+    console.log("checkForAns()")
+     clearInterval(countdown)
+  }
+
+    // For the else, you want to do DOM manp. 
+    // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
+  else {
+    timer.innerText = `Timer: ${count}`
+  }
+  count-=1
 }
-strikeOut()
+
+// console.log(countdownTimer)
 
 const gamePlay = () => {
     if ( answerSelection === answerLyric){
 
     }
 }
+gamePlay()
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', answerSelection)
+})
 // when this page hits the game should start
-// you should see the countdown timer, 
+// you should see the countdown timer, finished
 // the lyrics
 // the options to choose from
 // when clicking on the wrong option, it should log a strike
