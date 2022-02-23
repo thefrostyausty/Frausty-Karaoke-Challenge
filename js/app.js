@@ -6,11 +6,16 @@ const playButton = document.getElementById('#play-button')
 const countDown = document.getElementById('#timer')
 const playerStrikes = document.getElementById('#strikes')
 const gameLyrics = document.getElementById('#lyrics')
+const answerSelection = document.getElementsByClassName('.gameplay-container')
+
 console.log('this is working?', startButton)
 console.log('this is working?', playButton)
 console.log('this is working?', countDown)
 console.log('this is working?', playerStrikes)
 console.log('this is working?', gameLyrics)
+
+let strike = 'X'
+let answerLyric = true;
 
 const songs = [
     {
@@ -44,38 +49,45 @@ const songs = [
         
     },
     {
-        title: '',
-        artist: 'tlc',
-        questionLyric: 'a scrub is a guy who think he is....',
-        answerLyric: 'fly and also known as a busta',
-        wrongLyric1: 'shy and also known as a hustla',
-        wrongLyric2: 'groovy and also known as a killa',
-        wrongLyric3: 'happy and also know as a star',
+        title: 'Call Me Maybe',
+        artist: 'Carly Rae Jepsen',
+        questionLyric: 'Hey I just met you and this is crazy....',
+        answerLyric: '.....but here is my number so call me maybe',
+        wrongLyric1: '.....but would you like to go on a date maybe',
+        wrongLyric2: '.....but here is my best friend, have you met Stacy?',
+        wrongLyric3: '.....but here is my song, so sing it maybe',
         
     },
     {
-        title: 'no scrubs',
-        artist: 'tlc',
-        questionLyric: 'a scrub is a guy who think he is....',
-        answerLyric: 'fly and also known as a busta',
-        wrongLyric1: 'shy and also known as a hustla',
-        wrongLyric2: 'groovy and also known as a killa',
-        wrongLyric3: 'happy and also know as a star',
+        title: 'Say My Name',
+        artist: 'Destinys Child',
+        questionLyric: 'say my name(x2) if no one is around you say....',
+        answerLyric: '.....baby I love you',
+        wrongLyric1: '.....girl I miss you',
+        wrongLyric2: '.....I dont want to diss you',
+        wrongLyric3: '.....I want to kiss you',
         
     },
 ]
 console.log('this is the songs', songs)
 
+const timer = 0
 const countdownTimer = () => {
-
+ for (let i = 45; i > 0; i--)
+ console.log(countdownTimer(timer))
 }
-
+console.log(countdownTimer)
 const strikeOut = () => {
-
+if (answerSelection !== songs.answerLyric && answerSelection == songs.wrongLyric1 || songs.wrongLyric2 || songs.wrongLyric3){
+    
+    }
 }
+strikeOut()
 
 const gamePlay = () => {
+    if ( answerSelection === answerLyric){
 
+    }
 }
 
 // when this page hits the game should start
