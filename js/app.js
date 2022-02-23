@@ -87,7 +87,6 @@ function time()
 {
   // Checks for answer!
   if (count === 0) {
-    console.log("checkForAns()")
      clearInterval(countdown)
   }
 
