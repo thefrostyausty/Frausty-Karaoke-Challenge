@@ -109,10 +109,10 @@ function showSongs(){
         option3.innerText = `${songs[songIndex].wrongLyric2}`
         option4.innerText = `${songs[songIndex].wrongLyric3}`
        
-        option1.addEventListener('click', function()(console.log(a)
-        option2.addEventListener('click', function()(console.log(b)
-        option3.addEventListener('click', function()(console.log(c)
-        option4.addEventListener('click', function()(console.log(d)
+        option1.addEventListener('click', function() { answerSelection = option1.innerText})
+        option2.addEventListener('click', function() { answerSelection = option2.innerText})
+        option3.addEventListener('click', function() { answerSelection = option3.innerText})
+        option4.addEventListener('click', function() { answerSelection = option4.innerText})
         // option1.document.addEventListener('click', console.log('did this work?'))
     
 }    
@@ -121,7 +121,7 @@ showSongs();
 
 const gamePlay = () => {
     
-    if (  === answerLyric){
+    if ( answerSelection === answerLyric){
     }
 }
 gamePlay()
