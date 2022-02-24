@@ -49,6 +49,8 @@ header{
 }
 
 .gameplay-container{
+    display: flex;
+    flex-direction: column;
     min-height: 750px;
     min-width: 750px;
     margin: 0 auto;

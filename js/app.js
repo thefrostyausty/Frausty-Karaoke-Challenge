@@ -12,7 +12,7 @@ console.log('this is working?', playButton)
 console.log('this is working?', timer)
 console.log('this is working?', gameLyrics)
 
-const firstPlayer = document.createElement('div').className('gameplay-container')
+const firstPlayer = document.createElement('div')
 let player = 'p1'
 let answerLyric = true;
 
@@ -22,32 +22,33 @@ function switchPlayer(currentPlayer) {
     } else {
       player = 'p1';
     }
+    // songIndex += 1
   }
-  switchPlayer(firstPlayer)
-
-const songs = [
-    {
-        title: 'No Scrubs',
-        artist: 'TLC',
-        questionLyric: 'A scrub is a guy who think he is....',
-        answerLyric: '.....fly and also known as a busta',
-        wrongLyric1: '.....shy and also known as a hustla',
-        wrongLyric2: '.....groovy and also known as a killa',
-        wrongLyric3: '.....happy and also know as a star',
-        
-    },
-    {
-        title: 'Single Ladies',
-        artist: 'Beyoncé',
-        questionLyric: 'If you like it, then you.....',
-        answerLyric: '.....should have put a ring on it',
-        wrongLyric1: '.....go to the club with it',
-        wrongLyric2: '.....dance in the bar with it',
-        wrongLyric3: '.....go around the world with it',
-        
-    },
-    {
-        title: 'Billie Jean',
+  switchPlayer(player);
+  
+  const songs = [
+      {
+          title: 'No Scrubs',
+          artist: 'TLC',
+          questionLyric: 'A scrub is a guy who think he is....',
+          answerLyric: '.....fly and also known as a busta',
+          wrongLyric1: '.....shy and also known as a hustla',
+          wrongLyric2: '.....groovy and also known as a killa',
+          wrongLyric3: '.....happy and also know as a star',
+          
+        },
+        {
+            title: 'Single Ladies',
+            artist: 'Beyoncé',
+            questionLyric: 'If you like it, then you.....',
+            answerLyric: '.....should have put a ring on it',
+            wrongLyric1: '.....go to the club with it',
+            wrongLyric2: '.....dance in the bar with it',
+            wrongLyric3: '.....go around the world with it',
+            
+        },
+        {
+            title: 'Billie Jean',
         artist: 'Michael Jackson',
         questionLyric: 'Billie Jean is not my lover she is....',
         answerLyric: '.....just a girl that says that I am the one',
@@ -79,37 +80,55 @@ const songs = [
 ]
 console.log('this is the songs', songs)
 
-let count = 45
+let count = 20
 
 let countdown = setInterval(time, 1000)
 
 function time()
 {
-  // Checks for answer!
-  if (count === 0) {
-     clearInterval(countdown)
-  }
-
+    if (count === 0) {
+        clearInterval(countdown)
+    }   
     // For the else, you want to do DOM manp. 
     // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
-  else {
-    timer.innerText = `Timer: ${count}`
-  }
-  count-=1
+    else {
+        timer.innerText = `Timer: ${count}`
+    }
+    count-=1
 }
 
 // console.log(countdownTimer)
+let songIndex = 0
+// const songTitle = songs.title.length
+// console.log(songTitle)
+function showSongs(){
+    // if (i = 0; i <= songs.length; i++) {
+        gameLyrics.innerText = `The Lyrics: ${songs[songIndex].questionLyric}`
+        option1.innerText = `${songs[songIndex].wrongLyric1}`
+        option2.innerText = `${songs[songIndex].answerLyric}`
+        option3.innerText = `${songs[songIndex].wrongLyric2}`
+        option4.innerText = `${songs[songIndex].wrongLyric3}`
+       
+        option1.addEventListener('click', function()(console.log(a)
+        option2.addEventListener('click', function()(console.log(b)
+        option3.addEventListener('click', function()(console.log(c)
+        option4.addEventListener('click', function()(console.log(d)
+        // option1.document.addEventListener('click', console.log('did this work?'))
+    
+}    
+showSongs();
+
 
 const gamePlay = () => {
-    if ( answerSelection === answerLyric){
-
+    
+    if (  === answerLyric){
     }
 }
 gamePlay()
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.addEventListener('click', answerSelection)
+    document.addEventListener('click', showSongs)
 })
 // when this page hits the game should start
 // you should see the countdown timer, finished
