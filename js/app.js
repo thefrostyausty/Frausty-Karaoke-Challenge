@@ -41,6 +41,10 @@ const endGame = () => {
     // this should index if the song index is less than the length songs
     if(songIndex < songs.length){
         songIndex++  
+        // recounting the variable of count at 20 seconds
+        count = 20
+        // when endgame is itself is recalled the timer itself resets
+        countdown = setInterval(time, 1000)
         console.log('after endgame', songIndex)
     } else {
         // this should be the end game condition
@@ -148,6 +152,8 @@ const songs = [
         
         const gamePlay = () => {
             console.log('what is being evoked here', player)
+            // when a player clicks on the right/wrong option the timer itself is reset
+            clearInterval(countdown)
             if (answerSelection === songs[songIndex].answerLyric) {
                 if (player === 'p1'){
                     player1Score++
