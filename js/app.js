@@ -15,7 +15,7 @@ const option2 = document.getElementById('option2')
 const option3 = document.getElementById('option3')
 const option4 = document.getElementById('option4')
 const endResults = document.getElementById('results')
-endResults.addEventListener('click', endGame)
+
 
 
 console.log('this is working?', startButton)
@@ -25,25 +25,29 @@ console.log('this is working?', gameLyrics)
 
 const firstPlayer = document.createElement('div')
 
-function switchPlayer(currentPlayer) {
-    if (currentPlayer === 'p1') {
+function switchPlayer() {
+    console.log('this should show current player', player)
+    if (player === 'p1') {
         player = 'p2';
     } else {
         player = 'p1';
     }
-    songIndex += 1
+    endGame();
 }
-switchPlayer(player);
+
 
 const endGame = () => {
+    console.log('before endgame', songIndex)
     // this should index if the song index is less than the length songs
     if(songIndex < songs.length){
-        songIndex += 1    
+        songIndex++  
+        console.log('after endgame', songIndex)
     } else {
         // this should be the end game condition
-        
+        endResults.style.visibility = 'visible'
+        // anytime you refer to dot notation .style.property you must use a 'string'
     }
-}
+} 
 
 
 const songs = [
@@ -143,15 +147,16 @@ const songs = [
 
         
         const gamePlay = () => {
+            console.log('what is being evoked here', player)
             if (answerSelection === songs[songIndex].answerLyric) {
                 if (player === 'p1'){
                     player1Score++
-                }    
-            } else {
+                } else {
                 player2Score++
             }
-            switchPlayer()
         }
+        switchPlayer()
+    }
             
             
 
