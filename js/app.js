@@ -5,7 +5,10 @@ const startButton = document.getElementById('start-button')
 const playButton = document.getElementById('play-button')
 const timer = document.getElementById('timer')
 const gameLyrics = document.getElementById('lyrics')
-const answerSelection = document.getElementsByClassName('gameplay-container')
+const option1 = document.getElementById('option1')
+const option2 = document.getElementById('option2')
+const option3 = document.getElementById('option3')
+const option4 = document.getElementById('option4')
 
 console.log('this is working?', startButton)
 console.log('this is working?', playButton)
@@ -18,28 +21,28 @@ let answerLyric = true;
 
 function switchPlayer(currentPlayer) {
     if (currentPlayer === 'p1') {
-      player = 'p2';
+        player = 'p2';
     } else {
-      player = 'p1';
+        player = 'p1';
     }
     // songIndex += 1
-  }
-  switchPlayer(player);
-  
-  const songs = [
-      {
-          title: 'No Scrubs',
-          artist: 'TLC',
-          questionLyric: 'A scrub is a guy who think he is....',
-          answerLyric: '.....fly and also known as a busta',
-          wrongLyric1: '.....shy and also known as a hustla',
-          wrongLyric2: '.....groovy and also known as a killa',
-          wrongLyric3: '.....happy and also know as a star',
-          
-        },
-        {
-            title: 'Single Ladies',
-            artist: 'Beyoncé',
+}
+switchPlayer(player);
+
+const songs = [
+    {
+        title: 'No Scrubs',
+        artist: 'TLC',
+        questionLyric: 'A scrub is a guy who think he is....',
+        answerLyric: '.....fly and also known as a busta',
+        wrongLyric1: '.....shy and also known as a hustla',
+        wrongLyric2: '.....groovy and also known as a killa',
+        wrongLyric3: '.....happy and also know as a star',
+        
+    },
+    {
+        title: 'Single Ladies',
+        artist: 'Beyoncé',
             questionLyric: 'If you like it, then you.....',
             answerLyric: '.....should have put a ring on it',
             wrongLyric1: '.....go to the club with it',
@@ -49,80 +52,83 @@ function switchPlayer(currentPlayer) {
         },
         {
             title: 'Billie Jean',
-        artist: 'Michael Jackson',
-        questionLyric: 'Billie Jean is not my lover she is....',
-        answerLyric: '.....just a girl that says that I am the one',
-        wrongLyric1: '.....just a woman that knows that I have some fun',
-        wrongLyric2: '.....just a game that I think should be done',
-        wrongLyric3: '.....just a figment of my imagination',
-        
-    },
-    {
-        title: 'Call Me Maybe',
-        artist: 'Carly Rae Jepsen',
-        questionLyric: 'Hey I just met you and this is crazy....',
-        answerLyric: '.....but here is my number so call me maybe',
-        wrongLyric1: '.....but would you like to go on a date maybe',
-        wrongLyric2: '.....but here is my best friend, have you met Stacy?',
-        wrongLyric3: '.....but here is my song, so sing it maybe',
-        
-    },
-    {
-        title: 'Say My Name',
-        artist: 'Destinys Child',
-        questionLyric: 'say my name(x2) if no one is around you say....',
-        answerLyric: '.....baby I love you',
-        wrongLyric1: '.....girl I miss you',
-        wrongLyric2: '.....I dont want to diss you',
-        wrongLyric3: '.....I want to kiss you',
-        
-    },
-]
-console.log('this is the songs', songs)
-
-let count = 20
-
-let countdown = setInterval(time, 1000)
-
-function time()
-{
-    if (count === 0) {
-        clearInterval(countdown)
-    }   
-    // For the else, you want to do DOM manp. 
-    // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
-    else {
-        timer.innerText = `Timer: ${count}`
-    }
-    count-=1
-}
-
-// console.log(countdownTimer)
-let songIndex = 0
-// const songTitle = songs.title.length
-// console.log(songTitle)
-function showSongs(){
-    // if (i = 0; i <= songs.length; i++) {
-        gameLyrics.innerText = `The Lyrics: ${songs[songIndex].questionLyric}`
-        option1.innerText = `${songs[songIndex].wrongLyric1}`
-        option2.innerText = `${songs[songIndex].answerLyric}`
-        option3.innerText = `${songs[songIndex].wrongLyric2}`
-        option4.innerText = `${songs[songIndex].wrongLyric3}`
-       
-        option1.addEventListener('click', function() { answerSelection = option1.innerText})
-        option2.addEventListener('click', function() { answerSelection = option2.innerText})
-        option3.addEventListener('click', function() { answerSelection = option3.innerText})
-        option4.addEventListener('click', function() { answerSelection = option4.innerText})
-        // option1.document.addEventListener('click', console.log('did this work?'))
+            artist: 'Michael Jackson',
+            questionLyric: 'Billie Jean is not my lover she is....',
+            answerLyric: '.....just a girl that says that I am the one',
+            wrongLyric1: '.....just a woman that knows that I have some fun',
+            wrongLyric2: '.....just a game that I think should be done',
+            wrongLyric3: '.....just a figment of my imagination',
+            
+        },
+        {
+            title: 'Call Me Maybe',
+            artist: 'Carly Rae Jepsen',
+            questionLyric: 'Hey I just met you and this is crazy....',
+            answerLyric: '.....but here is my number so call me maybe',
+            wrongLyric1: '.....but would you like to go on a date maybe',
+            wrongLyric2: '.....but here is my best friend, have you met Stacy?',
+            wrongLyric3: '.....but here is my song, so sing it maybe',
+            
+        },
+        {
+            title: 'Say My Name',
+            artist: 'Destinys Child',
+            questionLyric: 'say my name(x2) if no one is around you say....',
+            answerLyric: '.....baby I love you',
+            wrongLyric1: '.....girl I miss you',
+            wrongLyric2: '.....I dont want to diss you',
+            wrongLyric3: '.....I want to kiss you',
+            
+        },
+    ]
+    console.log('this is the songs', songs)
     
-}    
-showSongs();
-
-
-const gamePlay = () => {
+    let count = 20
     
-    if ( answerSelection === answerLyric){
+    let countdown = setInterval(time, 1000)
+    
+    function time()
+    {
+        if (count === 0) {
+            clearInterval(countdown)
+        }   
+        // For the else, you want to do DOM manp. 
+        // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
+        else {
+            timer.innerText = `Timer: ${count}`
+        }
+        count-=1
     }
+    
+    // console.log(countdownTimer)
+    let songIndex = 0
+    // const songTitle = songs.title.length
+    // console.log(songTitle)
+    function showSongs(){
+        // if (i = 0; i <= songs.length; i++) {
+            gameLyrics.innerText = `The Lyrics: ${songs[songIndex].questionLyric}`
+            option1.innerText = `${songs[songIndex].wrongLyric1}`
+            option2.innerText = `${songs[songIndex].answerLyric}`
+            option3.innerText = `${songs[songIndex].wrongLyric2}`
+            option4.innerText = `${songs[songIndex].wrongLyric3}`
+            
+            option1.addEventListener('click', function() { answerSelection.innerText = option1.innerText})
+            option2.addEventListener('click', function() { answerSelection.innerText = option2.innerText})
+            option3.addEventListener('click', function() { answerSelection.innerText = option3.innerText})
+            option4.addEventListener('click', function() { answerSelection.innerText = option4.innerText})
+            // option1.document.addEventListener('click', console.log('did this work?'))
+            
+        }    
+        showSongs();
+        
+        
+        const gamePlay = () => {
+            
+            let answerSelection = 0
+            if (option === songs[songIndex].answerLyric) {
+                return answerSelection++
+            } else { (option !== songs.[songIndex].answerLyric)
+            switchPlayer()}
 }
 gamePlay()
 
