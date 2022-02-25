@@ -1,5 +1,5 @@
 let count = 20
-let countdown = setInterval(time, 1000)
+let countdown = 0
 let player = 'p1'
 let answerLyric = true;
 let songIndex = 0
@@ -17,9 +17,16 @@ const option4 = document.getElementById('option4')
 const endResults = document.getElementById('results')
 const optionsArray = [option1, option2, option3, option4]
 const playerMessage = document.querySelector('.players-container')
-// const p1Score = document.getElementById('player1')
-console.log('what is p1score returning', playerMessage)
-// const p2Score = document.getElementById('player2')
+const p1Score = document.querySelector('#player1')
+const p2Score = document.querySelector('#player2')
+const letsPlay = document.getElementById('play-button')
+
+let answerSelection = 0
+let player1Score = 0
+let player2Score = 0
+
+// p1Score.innerText = 'player 1'
+// console.log('what is p1score returning', p1Score.innerText)
 
 console.log('this is working?', startButton)
 console.log('this is working?', playButton)
@@ -40,16 +47,35 @@ function switchPlayer() {
         songIndex++
         showSongs();
         count = 20
-        countdown = setInterval(time, 1000)
+        // countdown = setInterval(time, 1000)
     } else {
         endGame();
     }
 }
 
+const showHidden = () =>{
+    const resultDiv = document.querySelector('#results-div')
+    // resultDiv.classList.remove('hidden')
+    resultDiv.style.display = 'flex'
+}
 
 const endGame = () => {
     console.log('before endgame', songIndex)
+    const p1Score = sessionStorage.getItem('player1Score')
+    const p2Score = sessionStorage.getItem('player2Score')
+    console.log('this is player1score', p1Score)
+    console.log('this is player2score', p2Score)
     endResults.style.visibility = 'visible'
+    // if (count === 0) {
+    //     clearInterval(countdown)
+    // }
+    // p1Score.innerHTML =`Player 1: ${player1Score}`
+    // p2Score.innerHTML =`Player 2: ${player2Score}`
+    // displayScores();
+    // console.log('endgame reached', player2Score)
+    // time();
+    // find a method to stop timer and stop adding lyrics to end results screen
+
     // this should index if the song index is less than the length songs
     // if(songIndex < songs.length){
     //      songIndex++  
@@ -132,6 +158,38 @@ function time() {
     count -= 1
 }
 
+
+const gamePlay = () => {
+    console.log('what is being evoked here', player)
+    // optionsArray.forEach((item) => {
+    //     item.removeEventListener('click', function(){
+    //         answerSelection = item.innerText
+    //         gamePlay();
+    //     })
+    // })    
+    // when a player clicks on the right/wrong option the timer itself is reset
+    clearInterval(countdown)
+    if (answerSelection === songs[songIndex].answerLyric) {
+        if (player === 'p1') {
+            player1Score++
+            sessionStorage.setItem('player1Score', player1Score)
+            switchPlayer()
+            console.log('player1 new score is', player1Score)
+        } else {
+            player2Score++
+            sessionStorage.setItem('player2Score', player2Score)
+            switchPlayer()
+            console.log('player2 new score is', player2Score)
+        }
+    } else {
+        switchPlayer()
+        console.log('player didnt make score')
+    }
+    console.log('session sotrage', sessionStorage.getItem('player1Score'))
+    console.log('session sotrage', sessionStorage.getItem('player2Score'))    
+}
+
+
 // console.log(countdownTimer)
 // const songTitle = songs.title.length
 // console.log(songTitle)
@@ -150,7 +208,8 @@ function showSongs() {
             gamePlay();
         }
     })
-
+    countdown = setInterval(time, 1000)
+}
 
 
 
@@ -167,50 +226,65 @@ function showSongs() {
     //     console.log('did this work?', answerSelection)
     //     gamePlay()})
 
-}
-showSongs();
-let answerSelection = 0
-let player1Score = 0
-let player2Score = 0
+// showSongs();
 
 const displayScores = () => {
-    console.log('inside displayScores', p1Score)
+    // console.log('display scores evoked by endgame')
+    // console.log('testing p1score in displayscores', p1Score.innerText)
+    // console.log('testing player1score in displayscores', player1Score)
+    
     p1Score.innerText = `Player 1: ${player1Score}`
     p2Score.innerText = `Player 2: ${player2Score}`
-}
-displayScores();
 
-const gamePlay = () => {
-    console.log('what is being evoked here', player)
-    // optionsArray.forEach((item) => {
-    //     item.removeEventListener('click', function(){
-    //         answerSelection = item.innerText
-    //         gamePlay();
-    //     })
-    // })    
-    // when a player clicks on the right/wrong option the timer itself is reset
-    clearInterval(countdown)
-    if (answerSelection === songs[songIndex].answerLyric) {
-        if (player === 'p1') {
-            player1Score++
-            switchPlayer()
-        } else {
-            player2Score++
-            switchPlayer()
-        }
-    } else {
-        switchPlayer()
-    }
 }
 
+// console.log('inside displayScores', p1Score.innerText)
 
+// const gamePlay = () => {
+//     console.log('what is being evoked here', player)
+//     // optionsArray.forEach((item) => {
+//     //     item.removeEventListener('click', function(){
+//     //         answerSelection = item.innerText
+//     //         gamePlay();
+//     //     })
+//     // })    
+//     // when a player clicks on the right/wrong option the timer itself is reset
+//     clearInterval(countdown)
+//     if (answerSelection === songs[songIndex].answerLyric) {
+//         if (player === 'p1') {
+//             player1Score++
+//             switchPlayer()
+//         } else {
+//             player2Score++
+//             switchPlayer()
+//         }
+//     } else {
+//         switchPlayer()
+//     }
+// }
+if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/gameplay.html'){
+    console.log('current window is gameplay')
+    showSongs();
+}
+if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/endgame.html'){
+    console.log('current window is endgame')
+    console.log('this is player1 score', player1Score)
+    console.log('this is player2 score', player2Score)
+    displayScores();
+}
+console.log('current window is:', window.location.href)
 
 document.addEventListener('DOMContentLoaded', function () {
-    // document.addEventListener('click', showSongs)
+  endResults.addEventListener('click', showHidden)
 })
 // when this page hits the game should start
 // you should see the countdown timer, finished
 // the lyrics
+// letsPlay.addEventListener('click', function(){
+//     window.location.href='gameplay.html'
+//     // showSongs()
+    
+// })
 // the options to choose from
 // when clicking on the wrong option, it should log a strike
 // when clicking on the right option, it should count towards wins
