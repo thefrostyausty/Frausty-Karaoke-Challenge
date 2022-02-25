@@ -84,3 +84,6 @@ header{
 .players{
     display: flex;
 }
+.hidden{
+    display: none;
+}
