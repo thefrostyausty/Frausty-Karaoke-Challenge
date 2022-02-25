@@ -77,6 +77,10 @@ header{
 #results{
     visibility: hidden;
 }
-#players{
-    
+#reset{
+    display: flex;
+    align-self: center;
+}
+.players{
+    display: flex;
 }

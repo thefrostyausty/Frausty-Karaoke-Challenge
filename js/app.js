@@ -16,8 +16,10 @@ const option3 = document.getElementById('option3')
 const option4 = document.getElementById('option4')
 const endResults = document.getElementById('results')
 const optionsArray = [option1, option2, option3, option4]
-
-
+const playerMessage = document.querySelector('.players-container')
+// const p1Score = document.getElementById('player1')
+console.log('what is p1score returning', playerMessage)
+// const p2Score = document.getElementById('player2')
 
 console.log('this is working?', startButton)
 console.log('this is working?', playButton)
@@ -34,7 +36,7 @@ function switchPlayer() {
         player = 'p1';
     }
     // endGame();
-    if (songIndex < (songs.length -1)){
+    if (songIndex < (songs.length - 1)) {
         songIndex++
         showSongs();
         count = 20
@@ -57,9 +59,10 @@ const endGame = () => {
     //     countdown = setInterval(time, 1000)
     //     console.log('after endgame', songIndex)
     // } else {
-        // this should be the end game condition
-        // anytime you refer to dot notation .style.property you must use a 'string'
-} 
+    // this should be the end game condition
+    // anytime you refer to dot notation .style.property you must use a 'string'
+}
+
 
 
 const songs = [
@@ -71,7 +74,7 @@ const songs = [
         wrongLyric1: '.....shy and also known as a hustla',
         wrongLyric2: '.....groovy and also known as a killa',
         wrongLyric3: '.....happy and also know as a star',
-        
+
     },
     {
         title: 'Single Ladies',
@@ -81,9 +84,9 @@ const songs = [
         wrongLyric1: '.....go to the club with it',
         wrongLyric2: '.....dance in the bar with it',
         wrongLyric3: '.....go around the world with it',
-            
-        },
-        {
+
+    },
+    {
         title: 'Billie Jean',
         artist: 'Michael Jackson',
         questionLyric: 'Billie Jean is not my lover she is....',
@@ -91,9 +94,9 @@ const songs = [
         wrongLyric1: '.....just a woman that knows that I have some fun',
         wrongLyric2: '.....just a game that I think should be done',
         wrongLyric3: '.....just a figment of my imagination',
-            
-        },
-        {
+
+    },
+    {
         title: 'Call Me Maybe',
         artist: 'Carly Rae Jepsen',
         questionLyric: 'Hey I just met you and this is crazy....',
@@ -101,9 +104,9 @@ const songs = [
         wrongLyric1: '.....but would you like to go on a date maybe',
         wrongLyric2: '.....but here is my best friend, have you met Stacy?',
         wrongLyric3: '.....but here is my song, so sing it maybe',
-            
-        },
-        {
+
+    },
+    {
         title: 'Say My Name',
         artist: 'Destinys Child',
         questionLyric: 'say my name(x2) if no one is around you say....',
@@ -111,91 +114,96 @@ const songs = [
         wrongLyric1: '.....girl I miss you',
         wrongLyric2: '.....I dont want to diss you',
         wrongLyric3: '.....I want to kiss you',
-            
-        },
-    ]
-    console.log('this is the songs', songs)
-    
-    
-    function time()
-    {
-        if (count === 0) {
-            clearInterval(countdown)
-        }   
-        // For the else, you want to do DOM manp. 
-        // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
-        else {
-            timer.innerText = `Timer: ${count}`
+
+    },
+]
+console.log('this is the songs', songs)
+
+
+function time() {
+    if (count === 0) {
+        clearInterval(countdown)
+    }
+    // For the else, you want to do DOM manp. 
+    // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
+    else {
+        timer.innerText = `Timer: ${count}`
+    }
+    count -= 1
+}
+
+// console.log(countdownTimer)
+// const songTitle = songs.title.length
+// console.log(songTitle)
+function showSongs() {
+    // if (i = 0; i <= songs.length; i++) {
+    console.log('current game index', songIndex)
+    gameLyrics.innerText = `The Lyrics: ${songs[songIndex].questionLyric}`
+    option1.innerText = `${songs[songIndex].wrongLyric1}`
+    option2.innerText = `${songs[songIndex].answerLyric}`
+    option3.innerText = `${songs[songIndex].wrongLyric2}`
+    option4.innerText = `${songs[songIndex].wrongLyric3}`
+
+    optionsArray.forEach((item) => {
+        item.onclick = function () {
+            answerSelection = item.innerText
+            gamePlay();
         }
-        count-=1
-    }
-    
-    // console.log(countdownTimer)
-    // const songTitle = songs.title.length
-    // console.log(songTitle)
-    function showSongs(){
-        // if (i = 0; i <= songs.length; i++) {
-            console.log('current game index', songIndex)
-            gameLyrics.innerText = `The Lyrics: ${songs[songIndex].questionLyric}`
-            option1.innerText = `${songs[songIndex].wrongLyric1}`
-            option2.innerText = `${songs[songIndex].answerLyric}`
-            option3.innerText = `${songs[songIndex].wrongLyric2}`
-            option4.innerText = `${songs[songIndex].wrongLyric3}`
-
-            optionsArray.forEach((item) => {
-                item.onclick = function(){
-                    answerSelection = item.innerText
-                    gamePlay();
-                }
-            })
+    })
 
 
 
-            
-            // option1.addEventListener('click', function() { answerSelection === option1.innerText
-            //     console.log('did this work?', answerSelection)
-            // gamePlay()})
-            // option2.addEventListener('click', function() { answerSelection === option2.innerText
-            //     console.log('did this work?', answerSelection)
-            //     gamePlay()})
-            // option3.addEventListener('click', function() { answerSelection === option3.innerText
-            //     console.log('did this work?', answerSelection)
-            //     gamePlay()})
-            // option4.addEventListener('click', function() { answerSelection === option4.innerText
-            //     console.log('did this work?', answerSelection)
-            //     gamePlay()})
-            
-        }    
-        showSongs();
-        let answerSelection = 0
-        let player1Score = 0
-        let player2Score = 0
 
-        
-        const gamePlay = () => {
-            console.log('what is being evoked here', player)
-            // optionsArray.forEach((item) => {
-            //     item.removeEventListener('click', function(){
-            //         answerSelection = item.innerText
-            //         gamePlay();
-            //     })
-            // })    
-            // when a player clicks on the right/wrong option the timer itself is reset
-            clearInterval(countdown)
-            if (answerSelection === songs[songIndex].answerLyric) {
-                if (player === 'p1'){
-                    player1Score++
-                    switchPlayer()
-                } else {
-                player2Score++
-                switchPlayer()
-            } 
+    // option1.addEventListener('click', function() { answerSelection === option1.innerText
+    //     console.log('did this work?', answerSelection)
+    // gamePlay()})
+    // option2.addEventListener('click', function() { answerSelection === option2.innerText
+    //     console.log('did this work?', answerSelection)
+    //     gamePlay()})
+    // option3.addEventListener('click', function() { answerSelection === option3.innerText
+    //     console.log('did this work?', answerSelection)
+    //     gamePlay()})
+    // option4.addEventListener('click', function() { answerSelection === option4.innerText
+    //     console.log('did this work?', answerSelection)
+    //     gamePlay()})
+
+}
+showSongs();
+let answerSelection = 0
+let player1Score = 0
+let player2Score = 0
+
+const displayScores = () => {
+    console.log('inside displayScores', p1Score)
+    p1Score.innerText = `Player 1: ${player1Score}`
+    p2Score.innerText = `Player 2: ${player2Score}`
+}
+displayScores();
+
+const gamePlay = () => {
+    console.log('what is being evoked here', player)
+    // optionsArray.forEach((item) => {
+    //     item.removeEventListener('click', function(){
+    //         answerSelection = item.innerText
+    //         gamePlay();
+    //     })
+    // })    
+    // when a player clicks on the right/wrong option the timer itself is reset
+    clearInterval(countdown)
+    if (answerSelection === songs[songIndex].answerLyric) {
+        if (player === 'p1') {
+            player1Score++
+            switchPlayer()
         } else {
+            player2Score++
+            switchPlayer()
+        }
+    } else {
         switchPlayer()
-        } 
     }
-            
-            
+}
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // document.addEventListener('click', showSongs)
