@@ -20,6 +20,7 @@ const playerMessage = document.querySelector('.players-container')
 const p1Score = document.querySelector('#player1')
 const p2Score = document.querySelector('#player2')
 const letsPlay = document.getElementById('play-button')
+const winnerMessage = document.querySelector('#winner')
 
 let answerSelection = 0
 let player1Score = 0
@@ -53,10 +54,30 @@ function switchPlayer() {
     }
 }
 
+function compareScore (){
+    if (player1Score === player2Score) {
+        return winnerMessage.innerText = 'It is a tie!'
+    } else { 
+        if (player1Score > player2Score) {
+        return winnerMessage.innerText = 'Player 1 wins'
+         } else {
+        return winnerMessage.innerText = 'Player 2 wins'
+        }
+    }
+}
 const showHidden = () =>{
     const resultDiv = document.querySelector('#results-div')
     // resultDiv.classList.remove('hidden')
     resultDiv.style.display = 'flex'
+
+    // let html = "";
+    
+
+    // resultDiv.innerHTML = html;
+    displayScores();
+    console.log(compareScore())
+    compareScore();   
+    
 }
 
 const endGame = () => {
@@ -142,6 +163,26 @@ const songs = [
         wrongLyric3: '.....I want to kiss you',
 
     },
+    {
+        title: 'Hotline Bling',
+        artist: 'Drake',
+        questionLyric: 'You used to call me on my cellphone',
+        answerLyric: '.....late night when you need my love',
+        wrongLyric1: '.....at midnight when you need a hug',
+        wrongLyric2: '.....late night when you need to kill a bug',
+        wrongLyric3: '.....at midnight when I need some tums',
+
+    },
+    {
+        title: 'Wannabe',
+        artist: 'Spice Girls',
+        questionLyric: 'If you wanna be my lover....',
+        answerLyric: '.....you gotta get with my friends',
+        wrongLyric1: '.....you gotta sing again',
+        wrongLyric2: '.....you gotta live with Jen',
+        wrongLyric3: '.....you gotta be my lover',
+
+    },
 ]
 console.log('this is the songs', songs)
 
@@ -153,7 +194,7 @@ function time() {
     // For the else, you want to do DOM manp. 
     // ex. document.getElementById("msgBox").textContent = `Time Remaining: ${count}`
     else {
-        timer.innerText = `Timer: ${count}`
+        timer.innerText = `Timer: ${count}` 
     }
     count -= 1
 }
