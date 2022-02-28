@@ -18,19 +18,19 @@ It should be able to have the clickable features and the screens to change.
 -JS
 
 -Start Pic
-![img](Page-1.png)
+![img](/img/Page-1.png)
 
 -Instructions
-![img](Page-2.png) 
+![img](/img/Page-2.png) 
 
 -Gameplay
-![img](Copy-of-Page-3.png)
+![img](/img/Copy-of-Page-3.png)
 
 Win Screen
-![img](Copy-of-Page-1.png)
+![img](/img/Copy-of-Page-1.png)
 
 Lose Screen
-![img](Copy-of-Copy-of-Page-1.png)
+![img](/img/Copy-of-Page-3.png)
 
 
 
