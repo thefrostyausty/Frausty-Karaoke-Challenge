@@ -75,17 +75,17 @@ const showHidden = () =>{
 
     // resultDiv.innerHTML = html;
     displayScores();
-    console.log(compareScore())
+    // console.log(compareScore())
     compareScore();   
     
 }
 
 const endGame = () => {
-    console.log('before endgame', songIndex)
+    // console.log('before endgame', songIndex)
     const p1Score = sessionStorage.getItem('player1Score')
     const p2Score = sessionStorage.getItem('player2Score')
-    console.log('this is player1score', p1Score)
-    console.log('this is player2score', p2Score)
+    // console.log('this is player1score', p1Score)
+    // console.log('this is player2score', p2Score)
     endResults.style.visibility = 'visible'
     // if (count === 0) {
     //     clearInterval(countdown)
@@ -184,7 +184,7 @@ const songs = [
 
     },
 ]
-console.log('this is the songs', songs)
+// console.log('this is the songs', songs)
 
 
 function time() {
@@ -201,7 +201,7 @@ function time() {
 
 
 const gamePlay = () => {
-    console.log('what is being evoked here', player)
+    // console.log('what is being evoked here', player)
     // optionsArray.forEach((item) => {
     //     item.removeEventListener('click', function(){
     //         answerSelection = item.innerText
@@ -215,19 +215,19 @@ const gamePlay = () => {
             player1Score++
             sessionStorage.setItem('player1Score', player1Score)
             switchPlayer()
-            console.log('player1 new score is', player1Score)
+            // console.log('player1 new score is', player1Score)
         } else {
             player2Score++
             sessionStorage.setItem('player2Score', player2Score)
             switchPlayer()
-            console.log('player2 new score is', player2Score)
+            // console.log('player2 new score is', player2Score)
         }
     } else {
         switchPlayer()
-        console.log('player didnt make score')
+        // console.log('player didnt make score')
     }
-    console.log('session sotrage', sessionStorage.getItem('player1Score'))
-    console.log('session sotrage', sessionStorage.getItem('player2Score'))    
+    // console.log('session sotrage', sessionStorage.getItem('player1Score'))
+    // console.log('session sotrage', sessionStorage.getItem('player2Score'))    
 }
 
 
@@ -304,16 +304,16 @@ const displayScores = () => {
 //     }
 // }
 if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/gameplay.html'){
-    console.log('current window is gameplay')
+    // console.log('current window is gameplay')
     showSongs();
 }
 if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/endgame.html'){
-    console.log('current window is endgame')
-    console.log('this is player1 score', player1Score)
-    console.log('this is player2 score', player2Score)
+    // console.log('current window is endgame')
+    // console.log('this is player1 score', player1Score)
+    // console.log('this is player2 score', player2Score)
     displayScores();
 }
-console.log('current window is:', window.location.href)
+// console.log('current window is:', window.location.href)
 
 document.addEventListener('DOMContentLoaded', function () {
   endResults.addEventListener('click', showHidden)
