@@ -1,11 +1,17 @@
+// here I have a value for count that is at 20 seconds
 let count = 20
+// my countdown variable is at 0
 let countdown = 0
+// here player one is established as 'p1' (string)
 let player = 'p1'
-let answerLyric = true;
+// here the boolean value of true is set to the answer lyric
+let answerLyric = true
+// my song index starts or is at 0
 let songIndex = 0
 
 
-
+// here are all my elements being stored and grabbing either
+// a class or id element
 const startButton = document.getElementById('start-button')
 const playButton = document.getElementById('play-button')
 const timer = document.getElementById('timer')
@@ -21,21 +27,26 @@ const p1Score = document.querySelector('#player1')
 const p2Score = document.querySelector('#player2')
 const letsPlay = document.getElementById('play-button')
 const winnerMessage = document.querySelector('#winner')
-
+const firstPlayer = document.createElement('div')
+// here my answer selection is set to zero
 let answerSelection = 0
+// player 1 and 2 scores are also set to zero
 let player1Score = 0
 let player2Score = 0
 
 // p1Score.innerText = 'player 1'
 // console.log('what is p1score returning', p1Score.innerText)
 
-console.log('this is working?', startButton)
-console.log('this is working?', playButton)
-console.log('this is working?', timer)
-console.log('this is working?', gameLyrics)
+// console.log('this is working?', startButton)
+// console.log('this is working?', playButton)
+// console.log('this is working?', timer)
+// console.log('this is working?', gameLyrics)
 
-const firstPlayer = document.createElement('div')
-
+// the simple switch player function starts with is the player is p1 its true then
+// it should switch to player 2 and so forth
+// in turn it also switches within the songindex by going up one
+// and song index - 1 as it would continue running to find another
+// song within the index
 function switchPlayer() {
     // songIndex++
     if (player === 'p1') {
@@ -53,7 +64,11 @@ function switchPlayer() {
         endGame();
     }
 }
-
+// here we have the compare scores function
+// I am most proud of this function because I needed no help at all to
+// write this one out
+// basically if player1 and 2 scores are the same it'll say its a tie
+// if player1 has the highger score they win and vice versa for player 2
 function compareScore (){
     if (player1Score === player2Score) {
         return winnerMessage.innerText = 'It is a tie!'
@@ -65,6 +80,7 @@ function compareScore (){
         }
     }
 }
+// in this function the 'get results' button is hidden until the final song has been played
 const showHidden = () =>{
     const resultDiv = document.querySelector('#results-div')
     // resultDiv.classList.remove('hidden')
@@ -79,7 +95,7 @@ const showHidden = () =>{
     compareScore();   
     
 }
-
+// a function that also reveals the end game results and becomes visible after being evoked in the 
 const endGame = () => {
     // console.log('before endgame', songIndex)
     const p1Score = sessionStorage.getItem('player1Score')
@@ -111,7 +127,7 @@ const endGame = () => {
 }
 
 
-
+// an array of object key value pairs for all my songs, listing title, artist, question lyric and answer lyric
 const songs = [
     {
         title: 'No Scrubs',
@@ -186,7 +202,8 @@ const songs = [
 ]
 // console.log('this is the songs', songs)
 
-
+// this is my timer function and it matches the innerHTML element and shows the count via 
+// string concatenation
 function time() {
     if (count === 0) {
         clearInterval(countdown)
@@ -234,6 +251,9 @@ const gamePlay = () => {
 // console.log(countdownTimer)
 // const songTitle = songs.title.length
 // console.log(songTitle)
+
+// this is the show songs function that is appended to the button options on my game and 
+// this is all accessed and referred back to my songs array of objects
 function showSongs() {
     // if (i = 0; i <= songs.length; i++) {
     console.log('current game index', songIndex)
@@ -268,7 +288,7 @@ function showSongs() {
     //     gamePlay()})
 
 // showSongs();
-
+// this function is pretty simple it displays the scores for player 1 and 2
 const displayScores = () => {
     // console.log('display scores evoked by endgame')
     // console.log('testing p1score in displayscores', p1Score.innerText)
@@ -303,18 +323,20 @@ const displayScores = () => {
 //         switchPlayer()
 //     }
 // }
+// conditional statements that say if the window is on game play it should evoke the show songs function
 if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/gameplay.html'){
     // console.log('current window is gameplay')
     showSongs();
 }
-if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/endgame.html'){
-    // console.log('current window is endgame')
-    // console.log('this is player1 score', player1Score)
-    // console.log('this is player2 score', player2Score)
-    displayScores();
-}
+// if (window.location.href === 'file:///Users/FrostyAusty/sei/projects/Frausty-Karaoke-Challenge/endgame.html'){
+//     // console.log('current window is endgame')
+//     // console.log('this is player1 score', player1Score)
+//     // console.log('this is player2 score', player2Score)
+//     displayScores();
+// }
 // console.log('current window is:', window.location.href)
-
+// when the dome content is loaded the end results button should be hidden until evoked in the end
+// game function
 document.addEventListener('DOMContentLoaded', function () {
   endResults.addEventListener('click', showHidden)
 })
