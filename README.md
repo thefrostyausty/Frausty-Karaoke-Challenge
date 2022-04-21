@@ -4,7 +4,7 @@
 In this project, I want to do a text based game where the user has to fill in the blanks
 or choose the correct answer out of multiple choices.
 
-As a User:
+As a User!:
 
 I should be able to when the site loads to be able to click on the start and begin options on the page. Then when I play it should be able to have a count down timer for 20 seconds. The players scores are tallied at the end of gameplay. When gameplaying I should be able to see a screen with the lyrics and the choices you should be able to choose from which if choosing the correct lyrics, you get a point and if you get an incorrect you receive no points.
 
